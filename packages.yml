@@ -8,6 +8,3 @@ packages:
   - package: calogica/dbt_date
     version: 0.5.7
     # <see https://github.com/calogica/dbt-date/releases/latest> for the latest version tag
-
-  # - git: https://github.com/shedd/bing-ads.git
-  #   revision: 0.1.5
