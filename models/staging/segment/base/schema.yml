@@ -1,0 +1,64 @@
+version: 2
+
+models:
+    - name: base_segment_estimate_pages
+      description: >
+        Data from Segment's pages analytics for the Estimate Lead form source.
+        This is a legacy source that ceased production use as of May 30, 2019.
+      columns:
+          - name: id
+            description: id field from Pages
+            tests:
+                - not_null
+
+    - name: base_segment_renofi_com_pages
+      description: >
+        Data from Segment's pages analytics for the com source.
+        This is the primary/sole source going forward.
+      columns:
+          - name: id
+            description: id field from Pages
+            tests:
+                - not_null
+
+    - name: base_segment_unioned_pages
+      description: >
+        With this model, we bring together two separate Segment sources - com and the estimate app.
+        By unioning the sources and then de-duping based on received_at, we should have a contiguous
+        session. Going forward, this will be less necessary as we only use the renofi_com source.
+      columns:
+          - name: id
+            description: id field from Pages
+            tests:
+                - not_null
+
+    - name: base_segment_estimate_identifies
+      description: >
+        Data from Segment's identifies model for the Estimate Lead form source.
+        This is a legacy source that ceased production use as of May 30, 2019.
+      columns:
+          - name: id
+            description: id field from identifies
+            tests:
+                - not_null
+
+    - name: base_segment_renofi_com_identifies
+      description: >
+        Data from Segment's identifies model for the com source.
+        This is the primary/sole source going forward.
+      columns:
+          - name: id
+            description: id field from identifies
+            tests:
+                - not_null
+
+    - name: base_segment_unioned_identifies
+      description: >
+        With this model, we bring together two separate Segment sources - com and the estimate app.
+        By unioning the sources and then de-duping based on received_at, we should have a cleaned set of
+        identifies data to query. Going forward, this will be less necessary as we only use the renofi_com source.
+      columns:
+          - name: id
+            description: id field from identifies
+            tests:
+                - not_null

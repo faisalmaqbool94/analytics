@@ -1,0 +1,5 @@
+-- Note Segment recommends querying their views but
+-- Segment's views only make the last 60 days of data available
+-- https://segment.com/docs/destinations/bigquery/#schema
+
+select * from {{ source('segment_legacy_estimate', 'identifies') }}

@@ -1,0 +1,40 @@
+version: 2
+
+models:
+
+  - name: stg_segment_calculator_views
+    description: >
+      This is data on user views of the main (completed) calculator page.
+      They've provided their information through the flow or have come back to the calculator.
+    columns:
+        - name: event_id
+          meta:
+            primary_key: true
+          description: id field
+          tests:
+              - unique
+              - not_null
+
+  - name: stg_segment_loan_calculator_used
+    description: >
+      This is data on user interaction with the loan calculator on the home page and MLO page.
+    columns:
+        - name: calculator_id
+          meta:
+            primary_key: true
+          description: id field
+          tests:
+              - unique
+              - not_null
+
+  - name: stg_segment_calculator_lead_created
+    description: >
+      This is data on users submiting email ids using calculator funnel
+    columns:
+        - name: id
+          meta:
+            primary_key: true
+          description: id field
+          tests:
+              - unique
+              - not_null

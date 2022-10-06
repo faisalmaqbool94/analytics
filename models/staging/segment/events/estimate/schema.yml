@@ -1,0 +1,53 @@
+version: 2
+
+models:
+
+  - name: stg_funnel_get_estimate_cta
+    description: >
+      This is data on users clicking on one of our GetEstimate CTA buttons.
+    columns:
+        - name: get_estimate_id
+          meta:
+            primary_key: true
+          description: id field
+          tests:
+              - unique
+              - not_null
+
+  - name: stg_segment_funnel_rates_page
+    description: >
+      This is data on user views of step 5 of the estimate funnel.
+      They've provided their information through the flow and can view their rates.
+    columns:
+        - name: event_id
+          meta:
+            primary_key: true
+          description: id field
+          tests:
+              - unique
+              - not_null
+
+  - name: stg_segment_get_estimate_cta
+    description: >
+      This is data on users clicking on one of our GetEstimate CTA buttons.
+      We take the data from `funnel_get_estimate_cta` and fill in missing CTA text based on site live dates.
+    columns:
+        - name: get_estimate_id
+          meta:
+            primary_key: true
+          description: id field
+          tests:
+              - unique
+              - not_null
+
+  - name: stg_segment_funnel_lead_created
+    description: >
+      This is data on users submiting email ids using estimate funnel
+    columns:
+        - name: id
+          meta:
+            primary_key: true
+          description: id field
+          tests:
+              - unique
+              - not_null

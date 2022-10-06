@@ -1,0 +1,69 @@
+version: 2
+
+models:
+    - name: stg_segment_landing_pageview
+      description: >
+        This is page data filtered to only landing page hits.
+      columns:
+          - name: page_view_id
+            meta:
+              primary_key: true
+            description: id field from Pages
+            tests:
+                - unique
+                - not_null
+
+    - name: stg_segment_pages
+      description: Segment's page views, our 2 Segment sources unified and de-duped through the Segment package
+      columns:
+          - name: page_view_id
+            meta:
+              primary_key: true
+            description: id field from Pages
+            tests:
+                - unique
+                - not_null
+
+    - name: stg_segment_identifies
+      description: Segment's identifies data, our 2 Segment sources unified and de-duped through the Segment package
+      columns:
+          - name: identifies_id
+            meta:
+              primary_key: true
+            description: id field from identifies
+            tests:
+                - unique
+                - not_null
+
+    - name: stg_segment_sessions
+      description: Segment's sessions, plus filtering, session numbering, and traffic classification.
+      columns:
+          - name: session_id
+            meta:
+              primary_key: true
+            description: id field from Sessions
+            tests:
+                - unique
+                - not_null
+
+    - name: segment_unioned_deduped_identifies
+      description: >
+        Taking the unioned data from the two Segment sources, we de-dup this data to
+        present a unified model to query.
+      columns:
+          - name: id
+            description: id field from identifies
+            tests:
+                - unique
+                - not_null
+
+    - name: segment_unioned_deduped_pages
+      description: >
+        Taking the unioned data from the two Segment sources, we de-dup this data to
+        present a unified, contiguous session.
+      columns:
+          - name: id
+            description: id field from Pages
+            tests:
+                - unique
+                - not_null

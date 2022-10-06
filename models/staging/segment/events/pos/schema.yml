@@ -1,0 +1,51 @@
+version: 2
+
+models:
+
+  - name: stg_segment_pos_lead_created
+    description: >
+      This is data on users submiting email ids using pos funnel
+    columns:
+        - name: id
+          meta:
+            primary_key: true
+          description: id field
+          tests:
+              - unique
+              - not_null
+
+  - name: stg_segment_pos_schedule_calendar_success
+    description: >
+      This is data on visitors/leads successfully scheduling a call with us
+    columns:
+        - name: id
+          meta:
+            primary_key: true
+          description: id field
+          tests:
+              - unique
+              - not_null
+
+  - name: stg_segment_pos_loan_type_entered
+    description: >
+      This is data on visitors/leads selecting the loan type they want [Renovate my current home/Renovate a home I am buying]
+    columns:
+        - name: id
+          meta:
+            primary_key: true
+          description: id field
+          tests:
+              - unique
+              - not_null
+
+  - name: stg_segment_pos_purchase_stage_entered
+    description: >
+      This is data on visitors/leads selecting the purchase stage
+    columns:
+        - name: id
+          meta:
+            primary_key: true
+          description: id field
+          tests:
+              - unique
+              - not_null

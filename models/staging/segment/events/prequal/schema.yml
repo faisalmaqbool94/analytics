@@ -1,0 +1,28 @@
+version: 2
+
+models:
+
+  - name: stg_segment_prequal_summary_page
+    description: >
+      This is data on user views of the (completed) prequal summary page.
+      They've provided their information through the flow.
+    columns:
+        - name: event_id
+          meta:
+            primary_key: true
+          description: id field
+          tests:
+              - unique
+              - not_null
+
+  - name: stg_segment_prequal_lead_created
+    description: >
+      This is data on users submiting email ids using prequal funnel
+    columns:
+        - name: id
+          meta:
+            primary_key: true
+          description: id field
+          tests:
+              - unique
+              - not_null

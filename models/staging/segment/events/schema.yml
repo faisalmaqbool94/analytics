@@ -1,0 +1,22 @@
+version: 2
+
+models:
+
+  - name: stg_segment_funnel_type
+    description: >
+      This model provides the lastest funnel that a visitor has used to submit email.
+    columns:
+        - name: email
+          meta:
+            primary_key: true
+          description: email of the lead
+          tests:
+              - unique
+              - not_null
+
+        - name: original_timestamp
+          description: timestamp of the lead created event
+
+        - name: funnel_type
+          description: which funnel out of pos, calculator, prequal and estimate has the visitor used to become lead
+

@@ -1,0 +1,21 @@
+-- This file will have all our vars and sources information
+version: 2
+
+models:
+  - name: model_a
+    description: "A starter dbt model"
+    columns:
+      - name: id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+
+  - name: model_b
+    description: "A starter dbt model"
+    columns:
+      - name: id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null

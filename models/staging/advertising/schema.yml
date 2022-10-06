@@ -1,0 +1,54 @@
+version: 2
+
+models:
+    - name: stg_adwords_campaigns
+      description: This model returns one row per campaign. This allows us to understand the campaign name.
+      columns:
+          - name: campaign_id
+            meta:
+              primary_key: true
+            tests:
+                - unique
+                - not_null
+
+    - name: stg_adwords_performance
+      description: This model returns one row per day per ad.
+      columns:
+          - name: id
+            meta:
+              primary_key: true
+            tests:
+                - unique
+                - not_null
+      tests:
+        - dbt_utils.unique_combination_of_columns:
+            combination_of_columns:
+              - ad_id
+              - customer_id
+              - date_day
+
+    - name: stg_adwords_click_performance
+      description: This model returns one row per gcl_id with info about its corresponding ad.
+      columns:
+          - name: gcl_id
+            meta:
+              primary_key: true
+            description: This is the Google Click ID to identify the exact click from a user. This should join back to the parsed gcl_id from Segment's referral field.
+            tests:
+                - unique
+                - not_null
+
+    - name: stg_adwords_campaign_performance
+      description: This model returns one row per campaign per day.
+      columns:
+          - name: id
+            meta:
+              primary_key: true
+            tests:
+                - unique
+                - not_null
+      tests:
+        - dbt_utils.unique_combination_of_columns:
+            combination_of_columns:
+              - campaign_id
+              - date_day
