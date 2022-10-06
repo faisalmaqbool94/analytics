@@ -1,0 +1,41 @@
+name: Deploy to prod
+
+on:
+    push:
+        branches:
+            - main
+
+env:
+    DBT_PROFILE_SA_PK: ${{ secrets.DBT_PROFILE_SA_PK }}
+
+jobs:
+  deploy_prod:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: [3.7]
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v2
+      with:
+        python-version: ${{ matrix.python-version }}
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+    - name: generate dbt docs
+      run: |
+        dbt docs generate --profiles-dir=ci_profiles
+    - name: deploy to production
+      run: |
+        dbt run --profiles-dir=ci_profiles --target=prod
+        dbt test --profiles-dir=ci_profiles --target=prod
+    - uses: actions-hub/gcloud@master
+      env:
+        PROJECT_ID: your project ID
+        APPLICATION_CREDENTIALS: ${{secrets.DOC_UPLOAD_KEY}}
+      with:
+        cli: gsutil
+        args: cp -r docs generation ID here
