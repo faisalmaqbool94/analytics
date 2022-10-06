@@ -57,7 +57,10 @@ For example: We could use metrics like **CPM, CTR, ROI, ROAS, ARPU and CAC** to 
   - We need to optimize our target audiences for LinkedIn
 
 Came to above conclusions using these --> 
-  [Graphs.pdf](https://github.com/faisalmaqbool94/growth-analytics/files/9727428/results.pdf)
+  [Campaign_Performance.pdf](https://github.com/faisalmaqbool94/analytics/files/9728101/Campaign_Performance.pdf)  
+[UniqueUsers_and_DemoBooked.pdf](https://github.com/faisalmaqbool94/analytics/files/9728102/UniqueUsers_and_DemoBooked.pdf)
+
+  
 
 #### What channel(s) are the most promising? Why?
 
